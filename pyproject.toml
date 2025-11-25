@@ -4,21 +4,22 @@ version = "0.1.0"
 description = "Build a deep agent from scratch"
 requires-python = ">=3.11, <3.14"
 dependencies = [
-"langgraph>=0.6.4",
-"langchain>=0.3.0",
-"langchain-openai>=0.2.0",
-"langchain-anthropic>=0.3.0",
-"langchain_community>=0.3.27",
-"langchain_tavily>=0.2.7",
-"langchain_mcp_adapters>=0.1.9",
-"pydantic>=2.0.0",
-"rich>=14.0.0",
-"jupyter>=1.0.0",
-"ipykernel>=6.20.0",
-"tavily-python>=0.5.0",
-"httpx>=0.28.1",
-"markdownify>=1.2.0",
-"deepagents>=0.0.3",
+    "langgraph>=1.0.3",
+    "langchain>=1.0.7",
+    "langchain-openai>=1.0.3",
+    "langchain-anthropic>=1.0.4",
+    "langchain_community>=0.4.1",
+    "langchain_tavily>=0.2.13",
+    "langchain_mcp_adapters>=0.1.13",
+    "pydantic>=2.12.4",
+    "rich>=14.2.0",
+    "jupyter>=1.1.1",
+    "ipykernel>=7.1.0",
+    "tavily-python>=0.7.13",
+    "httpx>=0.28.1",
+    "markdownify>=1.2.2",
+    "deepagents>=0.2.7",
+    "langchain-teddynote>=0.5.4",
 ]
 
 [project.optional-dependencies]

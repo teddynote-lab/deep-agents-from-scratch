@@ -5,6 +5,8 @@ that enable agents to plan complex workflows and track progress through
 multi-step operations.
 """
 
+# TODO 리스트 기반 작업 플래닝 및 진행 상황 추적 툴 구현 목적
+
 from typing import Annotated
 
 from langchain_core.messages import ToolMessage
@@ -16,6 +18,7 @@ from deep_agents_from_scratch.prompts import WRITE_TODOS_DESCRIPTION
 from deep_agents_from_scratch.state import DeepAgentState, Todo
 
 
+# write_todos 툴 정의, LLM이 전달한 TODO 리스트를 state에 저장 및 메시지 기록
 @tool(description=WRITE_TODOS_DESCRIPTION,parse_docstring=True)
 def write_todos(
     todos: list[Todo], tool_call_id: Annotated[str, InjectedToolCallId]
@@ -29,6 +32,7 @@ def write_todos(
     Returns:
         Command to update agent state with new TODO list
     """
+    # TODO 리스트와 메시지 업데이트를 위한 Command 객체 반환
     return Command(
         update={
             "todos": todos,
@@ -39,6 +43,7 @@ def write_todos(
     )
 
 
+# read_todos 툴 정의, 현재 state의 TODO 리스트를 읽어 포맷된 문자열로 반환
 @tool(parse_docstring=True)
 def read_todos(
     state: Annotated[DeepAgentState, InjectedState],
@@ -56,14 +61,18 @@ def read_todos(
     Returns:
         Formatted string representation of the current TODO list
     """
+    # state에서 todos 리스트 추출, 없으면 빈 리스트 반환
     todos = state.get("todos", [])
     if not todos:
+        # TODO 리스트가 비어 있을 때 안내 메시지 반환
         return "No todos currently in the list."
 
+    # 현재 TODO 리스트를 번호, 이모지, 상태와 함께 포맷팅하여 문자열로 생성
     result = "Current TODO List:\n"
     for i, todo in enumerate(todos, 1):
         status_emoji = {"pending": "⏳", "in_progress": "🔄", "completed": "✅"}
         emoji = status_emoji.get(todo["status"], "❓")
         result += f"{i}. {emoji} {todo['content']} ({todo['status']})\n"
 
+    # 최종 포맷된 TODO 리스트 문자열 반환
     return result.strip()
