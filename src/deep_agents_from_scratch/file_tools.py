@@ -19,14 +19,12 @@ from deep_agents_from_scratch.prompts import (
 from deep_agents_from_scratch.state import DeepAgentState
 
 
-# 가상 파일 시스템 내 파일 목록을 반환합니다.
 @tool(description=LS_DESCRIPTION)
 def ls(state: Annotated[DeepAgentState, InjectedState]) -> list[str]:
     """List all files in the virtual filesystem."""
     return list(state.get("files", {}).keys())
 
 
-# 파일을 읽어 반환합니다. 오프셋과 최대 라인 수를 지정할 수 있습니다.
 @tool(description=READ_FILE_DESCRIPTION, parse_docstring=True)
 def read_file(
     file_path: str,
@@ -45,36 +43,29 @@ def read_file(
     Returns:
         Formatted file content with line numbers, or error message if file not found
     """
-    # 파일 시스템에서 파일을 조회합니다.
     files = state.get("files", {})
     if file_path not in files:
         return f"Error: File '{file_path}' not found"
 
-    # 파일이 비어 있으면 안내 메시지를 반환합니다.
     content = files[file_path]
     if not content:
         return "System reminder: File exists but has empty contents"
 
-    # 파일 내용을 줄 단위로 분할하고 오프셋 및 제한을 적용합니다.
     lines = content.splitlines()
     start_idx = offset
     end_idx = min(start_idx + limit, len(lines))
 
-    # 오프셋이 파일 길이를 초과하면 에러 메시지를 반환합니다.
     if start_idx >= len(lines):
         return f"Error: Line offset {offset} exceeds file length ({len(lines)} lines)"
 
-    # 각 줄에 번호를 붙이고 2000자까지 잘라서 결과를 만듭니다.
     result_lines = []
     for i in range(start_idx, end_idx):
-        line_content = lines[i][:2000]
+        line_content = lines[i][:2000]  # Truncate long lines
         result_lines.append(f"{i + 1:6d}\t{line_content}")
 
-    # 결과를 문자열로 합쳐 반환합니다.
     return "\n".join(result_lines)
 
 
-# 파일에 내용을 기록하고 상태를 갱신하는 커맨드를 반환합니다.
 @tool(description=WRITE_FILE_DESCRIPTION, parse_docstring=True)
 def write_file(
     file_path: str,
@@ -93,10 +84,8 @@ def write_file(
     Returns:
         Command to update agent state with new file content
     """
-    # 파일 시스템에 파일을 저장합니다.
     files = state.get("files", {})
     files[file_path] = content
-    # 파일 업데이트 메시지와 함께 커맨드를 반환합니다.
     return Command(
         update={
             "files": files,

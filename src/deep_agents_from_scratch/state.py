@@ -8,9 +8,7 @@ This module defines the extended agent state structure that supports:
 
 from typing import Annotated, Literal, NotRequired
 from typing_extensions import TypedDict
-
-#from langgraph.prebuilt.chat_agent_executor import AgentState
-from langchain.agents import AgentState  # updated in 1.0
+from langchain.agents import AgentState
 
 # 복잡한 작업 플로우의 진행 상황 추적을 위한 TODO 항목 구조 정의
 class Todo(TypedDict):

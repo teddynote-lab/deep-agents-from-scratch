@@ -48,7 +48,7 @@ def write_todos(
 def read_todos(
     state: Annotated[DeepAgentState, InjectedState],
     tool_call_id: Annotated[str, InjectedToolCallId],
-) -> str:
+) -> Command:
     """Read the current TODO list from the agent state.
 
     This tool allows the agent to retrieve and review the current TODO list
@@ -59,20 +59,27 @@ def read_todos(
         tool_call_id: Injected tool call identifier for message tracking
 
     Returns:
-        Formatted string representation of the current TODO list
+        Command to update agent state with ToolMessage containing formatted TODO list
     """
     # state에서 todos 리스트 추출, 없으면 빈 리스트 반환
     todos = state.get("todos", [])
     if not todos:
         # TODO 리스트가 비어 있을 때 안내 메시지 반환
-        return "No todos currently in the list."
+        message_content = "No todos currently in the list."
+    else:
+        # 현재 TODO 리스트를 번호, 이모지, 상태와 함께 포맷팅하여 문자열로 생성
+        result = "Current TODO List:\n"
+        for i, todo in enumerate(todos, 1):
+            status_emoji = {"pending": "⏳", "in_progress": "🔄", "completed": "✅"}
+            emoji = status_emoji.get(todo["status"], "❓")
+            result += f"{i}. {emoji} {todo['content']} ({todo['status']})\n"
+        message_content = result.strip()
 
-    # 현재 TODO 리스트를 번호, 이모지, 상태와 함께 포맷팅하여 문자열로 생성
-    result = "Current TODO List:\n"
-    for i, todo in enumerate(todos, 1):
-        status_emoji = {"pending": "⏳", "in_progress": "🔄", "completed": "✅"}
-        emoji = status_emoji.get(todo["status"], "❓")
-        result += f"{i}. {emoji} {todo['content']} ({todo['status']})\n"
-
-    # 최종 포맷된 TODO 리스트 문자열 반환
-    return result.strip()
+    # Command 객체로 래핑하여 ToolMessage와 함께 반환
+    return Command(
+        update={
+            "messages": [
+                ToolMessage(message_content, tool_call_id=tool_call_id)
+            ],
+        }
+    )
