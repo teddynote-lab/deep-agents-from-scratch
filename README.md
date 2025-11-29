@@ -2,6 +2,8 @@
 
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
+![LangChain](https://img.shields.io/badge/langchain-1.1.0%2B-blue)
+![LangGraph](https://img.shields.io/badge/langgraph-1.0.4%2B-blue)
 
 ![](./notebooks/assets/agent_header.png)
 
