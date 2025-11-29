@@ -1,4 +1,4 @@
-# 🧱 밑바닥부터 만드는 Deep Agent (Deep Agents from Scratch)
+# 🧱 밑바닥부터 만드는 Deep Agent
 
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
