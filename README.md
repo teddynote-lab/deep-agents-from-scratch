@@ -5,13 +5,18 @@
 
 ![](./notebooks/assets/agent_header.png)
 
-[Deep Research](https://academy.langchain.com/courses/deep-research-with-langgraph)는 코딩과 함께 최초의 주요 에이전트 사용 사례 중 하나로 부상했습니다. 이제 우리는 광범위한 작업에 사용할 수 있는 범용 에이전트의 출현을 목격하고 있습니다. 예를 들어, [Manus](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)는 장기(long-horizon) 작업을 수행하는 능력으로 큰 주목을 받았으며, 평균적인 Manus 작업은 약 50회의 툴 호출을 사용합니다! 두 번째 예로, Claude Code는 코딩을 넘어선 일반적인 작업에도 사용되고 있습니다. 이러한 인기 있는 "Deep" 에이전트들의 [컨텍스트 엔지니어링 패턴](https://docs.google.com/presentation/d/16aaXLu40GugY-kOpqDU4e-S0hD1FmHcNyF0rRRnb1OU/edit?slide=id.p#slide=id.p)을 주의 깊게 살펴보면 몇 가지 공통적인 접근 방식을 발견할 수 있습니다:
+[Deep Research](https://academy.langchain.com/courses/deep-research-with-langgraph)는 코딩과 함께 최초의 주요 에이전트 사용 사례 중 하나로 부상했습니다. 이제 우리는 광범위한 작업에 사용할 수 있는 범용 에이전트의 출현을 목격하고 있습니다. 예를 들어, [Manus](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)는 장기(long-horizon) 작업을 수행하는 능력으로 큰 주목을 받았으며, 평균적인 Manus 작업은 약 50회의 툴 호출을 사용합니다.
 
-*   **작업 계획 (예: TODO), 종종 암송(recitation)과 함께 사용됨**
-*   **파일 시스템으로의 컨텍스트 오프로딩 (Context offloading)**
-*   **서브 에이전트 위임을 통한 컨텍스트 격리 (Context isolation)**
+두 번째 예로, Claude Code는 코딩을 넘어선 일반적인 작업에도 사용되고 있습니다.
 
-핸즈온 튜토리얼에서는 LangGraph를 사용하여 이러한 패턴들을 밑바닥부터 구현하는 방법을 보여줍니다!
+이러한 인기 있는 "Deep" 에이전트들의 [컨텍스트 엔지니어링 패턴](https://docs.google.com/presentation/d/16aaXLu40GugY-kOpqDU4e-S0hD1FmHcNyF0rRRnb1OU/edit?slide=id.p#slide=id.p)을 주의 깊게 살펴보면 몇 가지 공통적인 접근 방식을 발견할 수 있습니다.
+
+**주요 특징**
+* **작업 계획 (예: TODO), 종종 암송(recitation)과 함께 사용됨**
+* **파일 시스템으로의 컨텍스트 오프로딩 (Context offloading)**
+* **서브 에이전트 위임을 통한 컨텍스트 격리 (Context isolation)**
+
+핸즈온 튜토리얼에서는 LangGraph를 사용하여 이러한 패턴들을 밑바닥부터 구현하는 방법을 보여줍니다.
 
 ## 🚀 퀵스타트 (Quickstart)
 
