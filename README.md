@@ -12,7 +12,7 @@
 이러한 인기 있는 "Deep" 에이전트들의 [컨텍스트 엔지니어링 패턴](https://docs.google.com/presentation/d/16aaXLu40GugY-kOpqDU4e-S0hD1FmHcNyF0rRRnb1OU/edit?slide=id.p#slide=id.p)을 주의 깊게 살펴보면 몇 가지 공통적인 접근 방식을 발견할 수 있습니다.
 
 **주요 특징**
-* **작업 계획 (예: TODO), 종종 암송(recitation)과 함께 사용됨**
+* **작업 계획 (예: TODO), Recitation 과 함께 사용됨**
 * **파일 시스템으로의 컨텍스트 오프로딩 (Context offloading)**
 * **서브 에이전트 위임을 통한 컨텍스트 격리 (Context isolation)**
 
