@@ -38,23 +38,23 @@ export PATH="/Users/$USER/.local/bin:$PATH"
 
 **Windows:**
 
-Windows 의 경우 아래 링크를 참고해 주세요:
+Windows 의 경우 아래 링크를 참고해 주세요.
 https://teddynote-lab.notion.site/Windows-WSL-2baadc4b25538096a02fdf3e9ec18e4d?source=copy_link
 
 ### 설치 (Installation)
 
-1. 저장소 클론:
+1. 저장소 클론
 ```bash
 git clone https://github.com/teddynote-lab/deep-agents-from-scratch.git
 cd deep_agents_from_scratch
 ```
 
-2. 패키지 및 의존성 설치 (가상 환경을 자동으로 생성하고 관리합니다):
+2. 패키지 및 의존성 설치 (가상 환경을 자동으로 생성하고 관리)
 ```bash
 uv sync
 ```
 
-3. 프로젝트 루트에 API 키를 포함한 `.env` 파일을 생성합니다:
+3. 프로젝트 루트에 API 키를 포함한 `.env` 파일을 생성
 ```bash
 # .env 파일 생성
 touch .env
@@ -74,7 +74,7 @@ LANGSMITH_TRACING=true
 LANGSMITH_PROJECT=deep-agents-from-scratch
 ```
 
-4. uv를 사용하여 노트북 또는 코드 실행:
+4. uv를 사용하여 노트북 또는 코드 실행
 ```bash
 # Jupyter 노트북 직접 실행
 uv run jupyter notebook
@@ -88,31 +88,31 @@ jupyter notebook
 
 이 저장소는 고급 AI 에이전트를 구축하는 방법을 가르쳐주는 5개의 단계별 노트북을 포함하고 있습니다:
 
-### `notebooks/01-DeepAgents-Basic.ipynb` - LangGraph를 활용한 ReAct 에이전트
+### [`notebooks/01-DeepAgents-Basic.ipynb`](./notebooks/01-DeepAgents-Basic.ipynb) - LangGraph를 활용한 ReAct 에이전트
 **LangChain**의 `create_agent`를 활용하여 **ReAct** 기반의 AI 에이전트를 구축하는 방법을 다룹니다. 계산기 툴 예제를 통해 에이전트의 핵심 구성 요소와 상태 관리 방법을 학습합니다.
 - **ReAct Agent**: Reasoning and Acting 프레임워크의 개념 및 동작 원리
 - **Prebuilt Agent**: 메모리, Human-in-the-loop, 스트리밍, 배포 등 주요 기능
 - **Tool Integration**: 계산기 툴 정의 및 에이전트 연동 실습
 
-### `notebooks/02-DeepAgents-TODO.ipynb` - 작업 계획 기초 (Task Planning Foundations)
+### [`notebooks/02-DeepAgents-TODO.ipynb`](./notebooks/02-DeepAgents-TODO.ipynb) - 작업 계획 기초 (Task Planning Foundations)
 **LangChain**과 **LangGraph**를 활용하여 Deep Agent의 상태 관리와 TODO 리스트 기반의 작업 플로우 설계 방법을 다룹니다. 장기 작업 관리 전략과 커스텀 State 및 툴(`write_todos`, `read_todos`) 구현 과정을 단계별로 설명합니다.
 - **TODO 리스트 기반 플래닝**: 장기 작업 수행 시 에이전트의 목표 집중 유도
 - **DeepAgentState 설계**: `messages`, `todos`, `files` 등 커스텀 State 구조 및 Reducer 정의
 - **TODO 관리 툴 구현**: `write_todos`, `read_todos` 툴의 구현 및 활용
 
-### `notebooks/03-DeepAgents-Context-Offloading.ipynb` - 가상 파일 시스템 (Virtual File Systems)
+### [`notebooks/03-DeepAgents-Context-Offloading.ipynb`](./notebooks/03-DeepAgents-Context-Offloading.ipynb) - 가상 파일 시스템 (Virtual File Systems)
 **Context Offloading** 기법을 활용하여 에이전트의 컨텍스트 윈도우를 효율적으로 관리하고, 가상 파일 시스템을 구축하는 방법을 다룹니다.
 - **Context Offloading**: 파일 시스템을 활용한 효율적인 컨텍스트 관리 전략
 - **Virtual File System**: LangGraph State 내 가상 파일 시스템 설계 및 구현
 - **File Tools**: `ls`, `read_file`, `write_file` 도구 개발 및 프롬프트 설계
 
-### `notebooks/04-DeepAgents-Sub-Agent-Delegation.ipynb` - 컨텍스트 격리 (Context Isolation)
+### [`notebooks/04-DeepAgents-Sub-Agent-Delegation.ipynb`](./notebooks/04-DeepAgents-Sub-Agent-Delegation.ipynb) - 컨텍스트 격리 (Context Isolation)
 **LangChain**을 활용하여 복잡한 에이전트 시스템에서 **Context Isolation(컨텍스트 격리)** 및 **Task Delegation(작업 위임)** 을 구현하는 방법을 다룹니다.
 - **Context Isolation**: Sub-agent를 활용한 독립적 작업 처리 및 컨텍스트 충돌 방지
 - **Sub-agent 구성**: `SubAgent` 타입 정의, 프롬프트 및 도구 할당
 - **Task Delegation**: Supervisor Agent의 작업 위임 도구(`task`) 개발
 
-### `notebooks/05-DeepAgents-Full-Version.ipynb` - 완전한 연구 에이전트 (Complete Research Agent)
+### [`notebooks/05-DeepAgents-Full-Version.ipynb`](./notebooks/05-DeepAgents-Full-Version.ipynb) - 완전한 연구 에이전트 (Complete Research Agent)
 이전까지 알아본 모든 내용을 종합하여 Deep Agent를 완성합니다. **Context Offloading**, **Sub-agent Delegation**, **Strategic Thinking** 을 결합하여 복잡한 리서치 워크플로우를 최적화하는 방법을 다룹니다.
 - **Deep Agent 아키텍처**: 파일 기반 컨텍스트 관리 및 토큰 효율화
 - **Search Tool**: Tavily API 연동, 웹페이지 요약, 파일 저장
